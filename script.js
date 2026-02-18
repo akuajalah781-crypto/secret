@@ -92,3 +92,20 @@ async function unlock() {
         msg.innerText = "❌ Maaf, ini bukan untuk kamu.";
     }
 }
+
+// helper for submitting on Enter
+function checkEnter(e) {
+    if (e.key === 'Enter') {
+        // prevent form submission behavior if any
+        e.preventDefault();
+        unlock();
+    }
+}
+
+// attach listener once DOM is ready
+window.addEventListener('DOMContentLoaded', () => {
+    const passwordInput = document.getElementById('password');
+    if (passwordInput) {
+        passwordInput.addEventListener('keydown', checkEnter);
+    }
+});
